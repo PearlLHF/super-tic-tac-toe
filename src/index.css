@@ -1,3 +1,10 @@
+:root {
+  --game-board-size: 306px;
+  --board-size: 102px;
+  --square-size: 34px;
+  --font-size: 20px;
+}
+
 body {
   font: 14px "Century Gothic", Futura, sans-serif;
   margin: 20px;
@@ -8,29 +15,44 @@ ul {
   padding-left: 30px;
 }
 
-.board-row:after {
+.board-row::after {
   clear: both;
   content: "";
-  display: table;
+  height: var(--square-size);
+  width: var(--board-size);
+}
+
+.super-board-row::after {
+  clear: both;
+  content: "";
+  height: var(--board-size);
+  width: var(--game-board-size);
 }
 
 .status {
   margin-bottom: 10px;
 }
 
+.board {
+  background: #fff;
+  float: left;
+  height: var(--board-size);
+  width: var(--board-size);
+}
+
 .square {
   background: #fff;
   border: 1px solid #999;
   float: left;
-  font-size: 24px;
+  font-size: var(--font-size);
   font-weight: bold;
-  line-height: 34px;
-  height: 34px;
+  line-height: var(--square-size);
+  height: var(--square-size);
   margin-right: -1px;
   margin-top: -1px;
   padding: 0;
   text-align: center;
-  width: 34px;
+  width: var(--square-size);
 }
 
 .square:focus {
@@ -39,6 +61,12 @@ ul {
 
 .kbd-navigation .square:focus {
   background: #ddd;
+}
+
+.game-board {
+  display: grid;
+  min-height: var(--game-board-size);
+  min-width: var(--game-board-size);
 }
 
 .game {
